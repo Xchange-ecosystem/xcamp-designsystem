@@ -1,6 +1,12 @@
-/* Import design tokens from @xchange/ui */
-@import '@xchange/ui/styles';
 @import 'tailwindcss';
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --primary: 222 89% 55%;
+  --muted-foreground: 215 16% 47%;
+  --border: 214 32% 91%;
+}
 
 * {
   box-sizing: border-box;
@@ -8,6 +14,7 @@
 }
 
 body {
+  margin: 0;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: system-ui, -apple-system, sans-serif;
