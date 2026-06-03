@@ -1,0 +1,15 @@
+/* Import design tokens from @xchange/ui */
+@import '@xchange/ui/styles';
+@import 'tailwindcss';
+
+* {
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
