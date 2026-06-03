@@ -1,8 +1,15 @@
 {
-  "name": "xcamp-app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@xchange/ui",
+  "private": false,
+  "version": "0.1.0",
   "type": "module",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./src/styles/globals.css"
+},
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -10,7 +17,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@xchange/ui": "github:xchange-ecosystem/xcamp-foundation#main",
     "@radix-ui/react-slot": "^1.2.4",
     "@supabase/supabase-js": "^2.106.2",
     "@tailwindcss/vite": "^4.3.0",
