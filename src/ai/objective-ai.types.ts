@@ -146,3 +146,32 @@ export interface ExtractToObjectiveResponse {
   cards: AICard[];          // action_item cards carrying AIProposal
   summary_markdown?: string;
 }
+
+// ─── Focus FAB contracts ──────────────────────────────────────────────────────
+
+export type FocusSignalSource =
+  | 'notification'
+  | 'dynamix'
+  | 'objective_state'
+  | 'onboarding';
+
+export interface FocusRouteContext {
+  objectiveId?: string;
+  projectId?: string;
+  tenantId: string;
+  currentRoute: string;
+}
+
+export interface FocusSignalRequest {
+  altitude: Altitude;
+  aiPersona?: AIPersona;
+  routeContext: FocusRouteContext;
+  // canvas_context is reserved for Phase 3 — intentionally omitted here
+}
+
+export interface FocusSignalResponse {
+  ok: boolean;
+  topCard: AICard | null;
+  remainingCount: number;
+  error?: string;
+}
