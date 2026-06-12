@@ -1,0 +1,1800 @@
+{
+  "framework_slug": "bpmo-proof",
+  "framework_version": "1.1.0",
+  "name": "BPMO + Proof Points",
+  "description": "The default Xcamp backcasting framework. Structures any project as a tree of objectives under four invariant dimensions (Business, Product, Market, Operations) and 22 canonical categories, with 7 archetype overlays for common project types. Each category carries a typed, stage-tagged proof-points catalog so generated objectives arrive pre-seeded with their expected evidence tasks. The proof model credits six evidence types — strategy, validation, capability, relationship, artifact, traction — so early-stage projects are scored on stage-appropriate signal rather than KPIs they could not yet have. Ontology anchored to: Business Model Canvas, APQC PCF, Porter, STP/4Ps/7Ps, TAM/SAM/SOM, SCOR, OKRs, IRIS+, AARRR.",
+  "structure": {
+    "levels": [
+      {
+        "slug": "dimension",
+        "label": "Dimension",
+        "description": "Invariant top-level axis. Written to objectives.dimension."
+      },
+      {
+        "slug": "category",
+        "label": "Category",
+        "description": "The unit that maps to one Xcamp objective. Written to objectives.category. Carries the proof-points catalog."
+      }
+    ],
+    "objective_level": "category",
+    "proof_level": "category",
+    "depth_note": "Two-level hierarchy (dimension → category). The Backcaster depth parameter controls how many objectives are generated per category, not the structural depth of the framework itself."
+  },
+  "proof_model": {
+    "types": [
+      {
+        "type": "strategy",
+        "kpi": false,
+        "demonstrates": "A reasoned, documented decision or bet — judgment before results"
+      },
+      {
+        "type": "validation",
+        "kpi": false,
+        "demonstrates": "External/market evidence that reduces a risk"
+      },
+      {
+        "type": "capability",
+        "kpi": false,
+        "demonstrates": "Demonstrated internal skill, process, or de-risked hard problem"
+      },
+      {
+        "type": "relationship",
+        "kpi": false,
+        "demonstrates": "A secured connection or commitment"
+      },
+      {
+        "type": "artifact",
+        "kpi": false,
+        "demonstrates": "A tangible document/asset that demonstrably exists"
+      },
+      {
+        "type": "traction",
+        "kpi": true,
+        "demonstrates": "Quantitative results — the classic investor KPI"
+      }
+    ],
+    "stages": [
+      "idea",
+      "pre_seed",
+      "seed",
+      "growth"
+    ],
+    "stage_ordering": {
+      "idea": 0,
+      "pre_seed": 1,
+      "seed": 2,
+      "growth": 3
+    },
+    "ladder_note": "Each proof point carries the earliest stage it typically appears. The generation step focuses proof tasks at stage <= current_stage + 1 so a pre-seed project sees idea + pre_seed catalog entries and seed entries only when they are blocking the next milestone. early_signal=true marks counter-intuitive progress that investors rarely see clearly at that stage."
+  },
+  "taxonomy": {
+    "dimensions": [
+      {
+        "slug": "business",
+        "label": "Business",
+        "question": "Is the venture sound as an entity — strategy, model, capital, governance, people?"
+      },
+      {
+        "slug": "product",
+        "label": "Product",
+        "question": "Is what we build/offer valuable, usable, feasible, and well-built?"
+      },
+      {
+        "slug": "market",
+        "label": "Market",
+        "question": "Do we understand demand and can we reach, win, and keep customers?"
+      },
+      {
+        "slug": "operations",
+        "label": "Operations",
+        "question": "Can the organization run and deliver reliably and improve over time?"
+      }
+    ],
+    "base_categories": [
+      {
+        "slug": "business.strategy",
+        "dimension": "business",
+        "label": "Strategy & Vision",
+        "scope": "Mission, vision, strategic objectives, competitive strategy, business-model definition",
+        "anchors": [
+          "Business Model Canvas",
+          "Porter Five Forces / generic strategies",
+          "APQC cat.1"
+        ],
+        "proof_points": [
+          {
+            "label": "Vision-to-execution thesis / strategy narrative",
+            "type": "strategy",
+            "stage": "idea",
+            "early_signal": true
+          },
+          {
+            "label": "Completed Business Model / Lean Canvas with riskiest assumptions flagged",
+            "type": "artifact",
+            "stage": "idea"
+          },
+          {
+            "label": "Competitive landscape map with an explicit differentiation bet",
+            "type": "strategy",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Documented pivot with before/after rationale",
+            "type": "strategy",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Domain-expert or advisor sign-off on the thesis",
+            "type": "relationship",
+            "stage": "pre_seed"
+          }
+        ]
+      },
+      {
+        "slug": "business.model_economics",
+        "dimension": "business",
+        "label": "Business Model & Unit Economics",
+        "scope": "Revenue streams, cost structure, pricing logic, margin, unit economics",
+        "anchors": [
+          "Business Model Canvas",
+          "Lean Canvas"
+        ],
+        "proof_points": [
+          {
+            "label": "Per-customer / per-transaction unit-economics model (even projected)",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Willingness-to-pay or pricing-experiment evidence",
+            "type": "validation",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Revenue-model decision with alternatives weighed",
+            "type": "strategy",
+            "stage": "idea"
+          },
+          {
+            "label": "Path-to-margin / cost-structure breakdown",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "First paying customer / first revenue",
+            "type": "traction",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "business.finance_funding",
+        "dimension": "business",
+        "label": "Finance & Funding",
+        "scope": "Financial planning, fundraising, capital structure, runway, investor readiness",
+        "anchors": [
+          "Venture financing stages",
+          "APQC cat.9 (strategic)"
+        ],
+        "proof_points": [
+          {
+            "label": "18-month financial model with runway",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Clean cap table & ownership structure",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Fundraising deck + data room prepared",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Soft-circled / committed capital or investor LOIs",
+            "type": "validation",
+            "stage": "seed",
+            "early_signal": true
+          },
+          {
+            "label": "Grant / non-dilutive funding secured",
+            "type": "traction",
+            "stage": "pre_seed"
+          }
+        ]
+      },
+      {
+        "slug": "business.legal_governance",
+        "dimension": "business",
+        "label": "Legal, Governance & Risk",
+        "scope": "Entity, IP, contracts, compliance, corporate governance, enterprise risk",
+        "anchors": [
+          "APQC cat.11",
+          "Corporate governance"
+        ],
+        "proof_points": [
+          {
+            "label": "Incorporated entity with founder agreements & vesting",
+            "type": "artifact",
+            "stage": "idea"
+          },
+          {
+            "label": "IP assignment / trademark / patent filing",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Core contract templates (customer, employment, NDA) in place",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Risk register with named mitigation owners",
+            "type": "artifact",
+            "stage": "seed",
+            "early_signal": true
+          },
+          {
+            "label": "Advisory board / governance structure established",
+            "type": "relationship",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "business.org_team",
+        "dimension": "business",
+        "label": "Organization & Team",
+        "scope": "Org design, hiring, leadership, culture, capability building",
+        "anchors": [
+          "APQC cat.7 (Human Capital)",
+          "Org design"
+        ],
+        "proof_points": [
+          {
+            "label": "Founder/team capability map vs. role gaps",
+            "type": "artifact",
+            "stage": "idea",
+            "early_signal": true
+          },
+          {
+            "label": "Key hire or co-founder secured",
+            "type": "relationship",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Prior shipped work / track record by the team",
+            "type": "capability",
+            "stage": "idea",
+            "early_signal": true
+          },
+          {
+            "label": "Hiring plan tied to milestones",
+            "type": "strategy",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Advisor/mentor roster with evidence of engagement",
+            "type": "relationship",
+            "stage": "pre_seed"
+          }
+        ]
+      },
+      {
+        "slug": "product.strategy_roadmap",
+        "dimension": "product",
+        "label": "Product Strategy & Roadmap",
+        "scope": "Product vision, roadmap, prioritization, outcomes",
+        "anchors": [
+          "North Star metric",
+          "RICE"
+        ],
+        "proof_points": [
+          {
+            "label": "Product vision + North Star metric defined",
+            "type": "artifact",
+            "stage": "idea"
+          },
+          {
+            "label": "Prioritized roadmap with explicit trade-off rationale",
+            "type": "strategy",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Outcome (not output) goals per phase",
+            "type": "strategy",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Roadmap-to-strategy traceability",
+            "type": "capability",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "product.discovery_research",
+        "dimension": "product",
+        "label": "Discovery & User Research",
+        "scope": "Problem validation, user research, opportunity assessment",
+        "anchors": [
+          "Continuous Discovery",
+          "Lean Startup",
+          "Double Diamond",
+          "Cagan value/usability risk"
+        ],
+        "proof_points": [
+          {
+            "label": "User-interview corpus with synthesized insights",
+            "type": "validation",
+            "stage": "idea",
+            "early_signal": true
+          },
+          {
+            "label": "Validated problem statement / JTBD evidence",
+            "type": "validation",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "A killed feature/idea + the evidence that killed it",
+            "type": "capability",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Opportunity-solution tree / prioritized problem set",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Design-partner or research cohort secured",
+            "type": "relationship",
+            "stage": "pre_seed"
+          }
+        ]
+      },
+      {
+        "slug": "product.design_ux",
+        "dimension": "product",
+        "label": "Design & Experience",
+        "scope": "UX/UI, interaction design, service design, prototyping",
+        "anchors": [
+          "Double Diamond",
+          "Design thinking"
+        ],
+        "proof_points": [
+          {
+            "label": "Clickable prototype / interactive mockups",
+            "type": "artifact",
+            "stage": "idea"
+          },
+          {
+            "label": "Usability-test results with iteration log",
+            "type": "validation",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Design system / component library",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "Service blueprint / end-to-end experience map",
+            "type": "artifact",
+            "stage": "pre_seed"
+          }
+        ]
+      },
+      {
+        "slug": "product.engineering_build",
+        "dimension": "product",
+        "label": "Engineering & Delivery",
+        "scope": "Architecture, development, release",
+        "anchors": [
+          "Agile/Scrum/Kanban",
+          "Dual-track agile",
+          "Cagan feasibility risk"
+        ],
+        "proof_points": [
+          {
+            "label": "Working prototype / MVP demo",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Architecture Decision Records (ADRs)",
+            "type": "artifact",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Technical spike resolving a key feasibility risk",
+            "type": "capability",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "CI/CD + deployment-cadence evidence",
+            "type": "capability",
+            "stage": "seed"
+          },
+          {
+            "label": "Shipped releases / changelog",
+            "type": "traction",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "product.data_technology",
+        "dimension": "product",
+        "label": "Data & Technology",
+        "scope": "Data architecture, platform, infrastructure underpinning the offering",
+        "anchors": [
+          "Data strategy",
+          "Platform engineering"
+        ],
+        "proof_points": [
+          {
+            "label": "Data model / schema + pipeline design",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Proprietary dataset or data-moat evidence",
+            "type": "capability",
+            "stage": "seed",
+            "early_signal": true
+          },
+          {
+            "label": "Infrastructure / scalability plan or benchmark",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "Security & privacy posture document",
+            "type": "artifact",
+            "stage": "pre_seed"
+          }
+        ]
+      },
+      {
+        "slug": "product.quality_reliability",
+        "dimension": "product",
+        "label": "Quality & Reliability",
+        "scope": "QA, testing, performance, reliability, product security",
+        "anchors": [
+          "Test pyramid",
+          "SRE"
+        ],
+        "proof_points": [
+          {
+            "label": "Automated test suite / coverage evidence",
+            "type": "capability",
+            "stage": "seed"
+          },
+          {
+            "label": "SLO definition + early monitoring",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "Performance benchmark results",
+            "type": "validation",
+            "stage": "seed"
+          },
+          {
+            "label": "Security review / pen-test results",
+            "type": "validation",
+            "stage": "growth"
+          }
+        ]
+      },
+      {
+        "slug": "market.research_sizing",
+        "dimension": "market",
+        "label": "Market Research & Sizing",
+        "scope": "Market analysis, TAM/SAM/SOM, segmentation, competitive landscape",
+        "anchors": [
+          "TAM/SAM/SOM",
+          "STP (Segmentation)",
+          "Porter Five Forces"
+        ],
+        "proof_points": [
+          {
+            "label": "TAM/SAM/SOM model with sourced assumptions",
+            "type": "artifact",
+            "stage": "idea"
+          },
+          {
+            "label": "Segmentation with a chosen beachhead + rationale",
+            "type": "strategy",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Competitive / landscape analysis",
+            "type": "artifact",
+            "stage": "idea"
+          },
+          {
+            "label": "\"Why now\" market-timing thesis",
+            "type": "strategy",
+            "stage": "idea",
+            "early_signal": true
+          }
+        ]
+      },
+      {
+        "slug": "market.positioning_brand",
+        "dimension": "market",
+        "label": "Positioning & Brand",
+        "scope": "Positioning, differentiation, brand identity, messaging",
+        "anchors": [
+          "STP (Positioning)",
+          "Brand architecture (Aaker)",
+          "Value Proposition Canvas"
+        ],
+        "proof_points": [
+          {
+            "label": "Positioning statement + Value Proposition Canvas",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Messaging tested with the target segment",
+            "type": "validation",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Category-design / differentiation thesis",
+            "type": "strategy",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Brand identity / narrative assets",
+            "type": "artifact",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "market.marketing_demand",
+        "dimension": "market",
+        "label": "Marketing & Demand Generation",
+        "scope": "Channels, campaigns, content, performance & growth marketing",
+        "anchors": [
+          "4Ps/7Ps marketing mix",
+          "Growth loops",
+          "AARRR"
+        ],
+        "proof_points": [
+          {
+            "label": "Waitlist / landing-page conversion data",
+            "type": "validation",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Documented channel strategy with prioritization",
+            "type": "strategy",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Content / SEO / community assets built",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Channel experiment results with CAC signal",
+            "type": "validation",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "market.sales_bd",
+        "dimension": "market",
+        "label": "Sales & Business Development",
+        "scope": "Pipeline, partnerships, channel/BD, deal flow",
+        "anchors": [
+          "Sales funnel",
+          "ICP",
+          "APQC cat.3"
+        ],
+        "proof_points": [
+          {
+            "label": "Signed letters of intent (LOIs)",
+            "type": "validation",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "ICP definition + sales-playbook draft",
+            "type": "capability",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Paid pilot agreement",
+            "type": "validation",
+            "stage": "seed"
+          },
+          {
+            "label": "Strategic partnership MOU",
+            "type": "relationship",
+            "stage": "seed"
+          },
+          {
+            "label": "Qualified pipeline with stages",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "Closed deals / bookings",
+            "type": "traction",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "market.customer_success",
+        "dimension": "market",
+        "label": "Customer Success & Retention",
+        "scope": "Onboarding, support, retention, churn, relationships",
+        "anchors": [
+          "APQC cat.6",
+          "NRR/retention",
+          "BMC customer relationships"
+        ],
+        "proof_points": [
+          {
+            "label": "Onboarding flow + first-value (\"aha\") definition",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Early-user testimonials / case studies",
+            "type": "validation",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Support process / playbook",
+            "type": "capability",
+            "stage": "seed"
+          },
+          {
+            "label": "Retention / cohort data",
+            "type": "traction",
+            "stage": "seed"
+          },
+          {
+            "label": "NPS or qualitative satisfaction evidence",
+            "type": "validation",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "market.growth_analytics",
+        "dimension": "market",
+        "label": "Growth & Analytics",
+        "scope": "Metrics, experimentation, funnel optimization",
+        "anchors": [
+          "AARRR",
+          "Growth experimentation"
+        ],
+        "proof_points": [
+          {
+            "label": "Analytics instrumentation / funnel defined",
+            "type": "capability",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Growth-experiment backlog + results",
+            "type": "capability",
+            "stage": "seed",
+            "early_signal": true
+          },
+          {
+            "label": "A growth loop identified and evidenced",
+            "type": "strategy",
+            "stage": "seed"
+          },
+          {
+            "label": "Activation / retention funnel metrics",
+            "type": "traction",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "operations.process_workflow",
+        "dimension": "operations",
+        "label": "Process & Workflow",
+        "scope": "Core operating processes, SOPs, workflow design, process improvement",
+        "anchors": [
+          "APQC PCF",
+          "Lean / Six Sigma",
+          "BPM"
+        ],
+        "proof_points": [
+          {
+            "label": "Documented core processes / SOPs",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "Process map for the key value-delivery flow",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "A measured process improvement (before/after)",
+            "type": "capability",
+            "stage": "seed",
+            "early_signal": true
+          },
+          {
+            "label": "Quality / consistency mechanism in place",
+            "type": "capability",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "operations.delivery_supplychain",
+        "dimension": "operations",
+        "label": "Delivery & Supply Chain",
+        "scope": "Fulfillment, supply chain, service delivery, logistics",
+        "anchors": [
+          "SCOR",
+          "APQC cat.4-5"
+        ],
+        "proof_points": [
+          {
+            "label": "Supplier / vendor agreements or sourcing plan",
+            "type": "relationship",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Capacity / scale-up plan",
+            "type": "strategy",
+            "stage": "seed"
+          },
+          {
+            "label": "Logistics / delivery cost model",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "First successful fulfillment at small scale",
+            "type": "traction",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "operations.systems_tooling",
+        "dimension": "operations",
+        "label": "Systems & Tooling",
+        "scope": "Internal IT, tooling, automation, the company's own tech stack",
+        "anchors": [
+          "APQC cat.8 (Manage IT)"
+        ],
+        "proof_points": [
+          {
+            "label": "Internal tool stack documented + integrated",
+            "type": "artifact",
+            "stage": "seed"
+          },
+          {
+            "label": "Workflow automation implemented",
+            "type": "capability",
+            "stage": "seed",
+            "early_signal": true
+          },
+          {
+            "label": "Single-source-of-truth for ops data established",
+            "type": "capability",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "operations.finance_admin",
+        "dimension": "operations",
+        "label": "Finance Operations & Admin",
+        "scope": "Bookkeeping, billing, procurement, payroll, back-office",
+        "anchors": [
+          "APQC cat.9 (executional)",
+          "Procurement"
+        ],
+        "proof_points": [
+          {
+            "label": "Bookkeeping / accounting system live",
+            "type": "artifact",
+            "stage": "pre_seed"
+          },
+          {
+            "label": "Billing / invoicing / payment flow operational",
+            "type": "capability",
+            "stage": "seed"
+          },
+          {
+            "label": "Monthly-close / reporting cadence",
+            "type": "capability",
+            "stage": "seed"
+          },
+          {
+            "label": "Procurement / expense controls",
+            "type": "artifact",
+            "stage": "seed"
+          }
+        ]
+      },
+      {
+        "slug": "operations.performance_kpi",
+        "dimension": "operations",
+        "label": "Performance & Continuous Improvement",
+        "scope": "KPIs, OKRs, dashboards, operational reviews, continuous improvement",
+        "anchors": [
+          "OKRs",
+          "Balanced Scorecard",
+          "Lean / Kaizen"
+        ],
+        "proof_points": [
+          {
+            "label": "KPI tree / quarterly OKRs defined",
+            "type": "artifact",
+            "stage": "pre_seed",
+            "early_signal": true
+          },
+          {
+            "label": "Operating dashboard live",
+            "type": "capability",
+            "stage": "seed"
+          },
+          {
+            "label": "An OKR retrospective / course-correction with evidence",
+            "type": "capability",
+            "stage": "seed",
+            "early_signal": true
+          },
+          {
+            "label": "Cross-dimension scorecard view",
+            "type": "artifact",
+            "stage": "growth"
+          }
+        ]
+      }
+    ],
+    "archetypes": [
+      {
+        "slug": "saas",
+        "label": "SaaS / Software Product",
+        "example": "AI Mentor for Startup Founders",
+        "emphasis": {
+          "product": 1.3,
+          "market.growth_analytics": 1.4,
+          "market.customer_success": 1.3,
+          "business.model_economics": 1.2
+        },
+        "add_categories": [],
+        "override_categories": {},
+        "signature_metrics": [
+          "MRR",
+          "ARR",
+          "gross_churn",
+          "net_churn",
+          "CAC",
+          "LTV",
+          "CAC_payback",
+          "activation_rate",
+          "NRR"
+        ]
+      },
+      {
+        "slug": "marketplace",
+        "label": "Marketplace / Platform",
+        "example": "Regenerative Fashion Marketplace",
+        "emphasis": {
+          "market": 1.4,
+          "operations.trust_safety": 1.3,
+          "product.strategy_roadmap": 1.1
+        },
+        "remove_categories": [
+          "market.marketing_demand",
+          "market.sales_bd"
+        ],
+        "add_categories": [
+          {
+            "slug": "market.supply_acquisition",
+            "dimension": "market",
+            "label": "Supply Acquisition & Activation",
+            "scope": "Seller/provider onboarding, supply liquidity",
+            "anchors": [
+              "Two-sided marketplace (supply side)"
+            ],
+            "proof_points": [
+              {
+                "label": "Supply-side value-prop validation / seller LOIs",
+                "type": "validation",
+                "stage": "pre_seed",
+                "early_signal": true
+              },
+              {
+                "label": "Supplier onboarding funnel",
+                "type": "artifact",
+                "stage": "pre_seed"
+              },
+              {
+                "label": "First N activated sellers/providers",
+                "type": "traction",
+                "stage": "seed"
+              }
+            ]
+          },
+          {
+            "slug": "market.demand_acquisition",
+            "dimension": "market",
+            "label": "Demand Acquisition & Conversion",
+            "scope": "Buyer acquisition, search-to-fill",
+            "anchors": [
+              "Two-sided marketplace (demand side)"
+            ],
+            "proof_points": [
+              {
+                "label": "Buyer waitlist / early demand signal",
+                "type": "validation",
+                "stage": "pre_seed",
+                "early_signal": true
+              },
+              {
+                "label": "Demand-acquisition experiment with CAC",
+                "type": "validation",
+                "stage": "seed"
+              },
+              {
+                "label": "Search-to-fill on demand side",
+                "type": "traction",
+                "stage": "seed"
+              }
+            ]
+          },
+          {
+            "slug": "market.matching_liquidity",
+            "dimension": "market",
+            "label": "Matching & Liquidity",
+            "scope": "Match rate, time-to-match, supply/demand balance",
+            "anchors": [
+              "Marketplace liquidity"
+            ],
+            "proof_points": [
+              {
+                "label": "Time-to-match benchmark",
+                "type": "capability",
+                "stage": "seed",
+                "early_signal": true
+              },
+              {
+                "label": "First successful matches/transactions",
+                "type": "traction",
+                "stage": "seed"
+              },
+              {
+                "label": "Match-rate measurement",
+                "type": "traction",
+                "stage": "seed"
+              }
+            ]
+          },
+          {
+            "slug": "operations.trust_safety",
+            "dimension": "operations",
+            "label": "Trust, Safety & Quality",
+            "scope": "Vetting, dispute resolution, fraud, incident rates",
+            "anchors": [
+              "Marketplace trust & safety"
+            ],
+            "proof_points": [
+              {
+                "label": "Vetting / verification process doc",
+                "type": "artifact",
+                "stage": "pre_seed"
+              },
+              {
+                "label": "Dispute-resolution policy",
+                "type": "artifact",
+                "stage": "seed"
+              },
+              {
+                "label": "First trust incidents handled with evidence",
+                "type": "capability",
+                "stage": "seed",
+                "early_signal": true
+              }
+            ]
+          }
+        ],
+        "signature_metrics": [
+          "liquidity_search_to_fill",
+          "GMV",
+          "take_rate",
+          "match_rate",
+          "time_to_first_transaction",
+          "supply_demand_balance",
+          "repeat_rate",
+          "contribution_margin_per_txn"
+        ]
+      },
+      {
+        "slug": "fund_impact",
+        "label": "Fund / Investment Vehicle / Impact Fund",
+        "example": "Community Energy Transition Fund",
+        "emphasis": {
+          "impact.measurement": 1.4,
+          "operations.portfolio_mgmt": 1.3,
+          "business.finance_funding": 1.3
+        },
+        "override_categories": {
+          "business.strategy": {
+            "label": "Fund Thesis & Strategy"
+          },
+          "business.finance_funding": {
+            "label": "Capital Formation & LP Relations"
+          },
+          "product.discovery_research": {
+            "label": "Deal Sourcing & Pipeline"
+          },
+          "product.engineering_build": {
+            "label": "Due Diligence & Investment Process"
+          },
+          "market.research_sizing": {
+            "label": "LP / Co-investor Network"
+          },
+          "market.customer_success": {
+            "label": "Stakeholder & Community Relations"
+          }
+        },
+        "add_categories": [
+          {
+            "slug": "operations.portfolio_mgmt",
+            "dimension": "operations",
+            "label": "Portfolio Management & Value Creation",
+            "scope": "Portfolio monitoring, value creation, follow-on, exits",
+            "anchors": [
+              "PE/VC portfolio management"
+            ],
+            "proof_points": [
+              {
+                "label": "Portfolio-construction model",
+                "type": "strategy",
+                "stage": "pre_seed",
+                "early_signal": true
+              },
+              {
+                "label": "First investment(s) closed",
+                "type": "traction",
+                "stage": "seed"
+              },
+              {
+                "label": "Portfolio monitoring dashboard",
+                "type": "capability",
+                "stage": "seed"
+              }
+            ]
+          },
+          {
+            "slug": "impact.measurement",
+            "dimension": "operations",
+            "label": "Impact Measurement & Management",
+            "scope": "Outcomes across the five dimensions of impact + SDG alignment",
+            "anchors": [
+              "IRIS+ / GIIN",
+              "Five Dimensions of Impact (What/Who/How Much/Contribution/Risk)"
+            ],
+            "proof_points": [
+              {
+                "label": "Theory of Change document",
+                "type": "strategy",
+                "stage": "idea",
+                "early_signal": true
+              },
+              {
+                "label": "IRIS+ metric set selected with baselines",
+                "type": "artifact",
+                "stage": "pre_seed"
+              },
+              {
+                "label": "SDG mapping",
+                "type": "artifact",
+                "stage": "pre_seed"
+              },
+              {
+                "label": "First outcome measured across the five dimensions",
+                "type": "validation",
+                "stage": "seed"
+              }
+            ]
+          }
+        ],
+        "signature_metrics": [
+          "AUM",
+          "deployment_pace",
+          "IRR",
+          "MOIC",
+          "DPI",
+          "portfolio_concentration",
+          "impact_what",
+          "impact_who",
+          "impact_how_much",
+          "impact_contribution",
+          "impact_risk",
+          "SDG_alignment"
+        ]
+      },
+      {
+        "slug": "services",
+        "label": "Services / Agency / Consulting",
+        "emphasis": {
+          "operations.delivery_supplychain": 1.4,
+          "market.sales_bd": 1.3,
+          "business.model_economics": 1.2
+        },
+        "override_categories": {
+          "product.strategy_roadmap": {
+            "label": "Service Design & Methodology"
+          },
+          "operations.delivery_supplychain": {
+            "label": "Engagement Delivery"
+          }
+        },
+        "add_categories": [],
+        "signature_metrics": [
+          "utilization",
+          "billable_rate",
+          "project_margin",
+          "pipeline_coverage",
+          "delivery_NPS",
+          "repeat_referral_rate"
+        ]
+      },
+      {
+        "slug": "hardware",
+        "label": "Hardware / Physical Product",
+        "emphasis": {
+          "product": 1.3,
+          "operations.delivery_supplychain": 1.4
+        },
+        "add_categories": [
+          {
+            "slug": "product.industrial_design",
+            "dimension": "product",
+            "label": "Industrial Design",
+            "scope": "Physical form, materials, design-for-manufacture",
+            "anchors": [
+              "Industrial design",
+              "DFM"
+            ],
+            "proof_points": [
+              {
+                "label": "Physical prototype",
+                "type": "artifact",
+                "stage": "pre_seed"
+              },
+              {
+                "label": "DFM (design-for-manufacture) review",
+                "type": "capability",
+                "stage": "seed",
+                "early_signal": true
+              },
+              {
+                "label": "Materials / cost study",
+                "type": "artifact",
+                "stage": "seed"
+              }
+            ]
+          },
+          {
+            "slug": "product.manufacturing",
+            "dimension": "product",
+            "label": "Manufacturing & Production",
+            "scope": "Tooling, production, quality control, scale-up",
+            "anchors": [
+              "Manufacturing / production"
+            ],
+            "proof_points": [
+              {
+                "label": "Pilot production run",
+                "type": "traction",
+                "stage": "seed"
+              },
+              {
+                "label": "QC process defined",
+                "type": "capability",
+                "stage": "seed"
+              },
+              {
+                "label": "First units produced",
+                "type": "traction",
+                "stage": "seed"
+              }
+            ]
+          }
+        ],
+        "signature_metrics": [
+          "BOM_cost",
+          "unit_margin",
+          "lead_time",
+          "yield_defect_rate",
+          "inventory_turns",
+          "time_to_market"
+        ]
+      },
+      {
+        "slug": "nonprofit",
+        "label": "Nonprofit / Social / Community",
+        "emphasis": {
+          "impact.measurement": 1.4,
+          "business.finance_funding": 1.2
+        },
+        "override_categories": {
+          "business.strategy": {
+            "label": "Mission & Theory of Change"
+          },
+          "business.finance_funding": {
+            "label": "Fundraising (Grants/Donations)"
+          },
+          "market.research_sizing": {
+            "label": "Beneficiary Engagement"
+          },
+          "market.customer_success": {
+            "label": "Donor Relations"
+          },
+          "operations.delivery_supplychain": {
+            "label": "Program Delivery"
+          }
+        },
+        "add_categories": [
+          {
+            "slug": "impact.measurement",
+            "dimension": "operations",
+            "label": "Impact Measurement & Management",
+            "scope": "Theory of Change + outcomes across the five dimensions of impact",
+            "anchors": [
+              "Theory of Change",
+              "IRIS+ / GIIN"
+            ],
+            "proof_points": [
+              {
+                "label": "Theory of Change document",
+                "type": "strategy",
+                "stage": "idea",
+                "early_signal": true
+              },
+              {
+                "label": "Outcome metric set with baselines",
+                "type": "artifact",
+                "stage": "pre_seed"
+              },
+              {
+                "label": "First measured program outcome",
+                "type": "validation",
+                "stage": "seed"
+              }
+            ]
+          }
+        ],
+        "signature_metrics": [
+          "beneficiaries_reached",
+          "program_outcomes",
+          "cost_per_outcome",
+          "donor_retention",
+          "grant_funding_secured"
+        ]
+      },
+      {
+        "slug": "research",
+        "label": "Research / R&D / Deep Tech",
+        "emphasis": {
+          "product.discovery_research": 1.4,
+          "business.finance_funding": 1.2
+        },
+        "override_categories": {
+          "product.discovery_research": {
+            "label": "Research Agenda & Hypotheses"
+          },
+          "product.engineering_build": {
+            "label": "Experimentation & Validation"
+          },
+          "business.finance_funding": {
+            "label": "Grant & Non-dilutive Funding"
+          }
+        },
+        "add_categories": [
+          {
+            "slug": "product.ip_strategy",
+            "dimension": "product",
+            "label": "IP Strategy",
+            "scope": "Patents, publications, IP protection & licensing",
+            "anchors": [
+              "IP strategy"
+            ],
+            "proof_points": [
+              {
+                "label": "Patent filing",
+                "type": "artifact",
+                "stage": "pre_seed"
+              },
+              {
+                "label": "Freedom-to-operate analysis",
+                "type": "capability",
+                "stage": "seed",
+                "early_signal": true
+              },
+              {
+                "label": "Publication",
+                "type": "validation",
+                "stage": "seed"
+              }
+            ]
+          }
+        ],
+        "signature_metrics": [
+          "milestone_completion",
+          "TRL",
+          "publications_patents",
+          "grant_funding_secured",
+          "replication_validation_rate"
+        ]
+      }
+    ]
+  },
+  "generation": {
+    "interpretation_prompt": "You are an expert at interpreting startup and project briefs for structured decomposition using the BPMO framework (Business · Product · Market · Operations).\n\nYour task: read the project brief and extract a structured interpretation that the decomposition engine will use in the next step. Output ONLY valid JSON — no preamble, no markdown fences, nothing else.\n\n## Archetype definitions\n{{ARCHETYPE_DEFINITIONS_JSON}}\n\n## Stage definitions\n- idea       : pre-formation; thesis exists, no team or product yet\n- pre_seed   : team forming, problem validated, prototype or early concept\n- seed       : MVP built or in market, early customers, raising first institutional round\n- growth     : product-market fit found, scaling revenue or users\n\n## Output schema (output exactly this shape)\n{\n  \"project_name\": \"inferred or stated project name\",\n  \"archetype_slug\": \"one of the archetype slugs above\",\n  \"archetype_confidence\": 0.0 to 1.0,\n  \"archetype_rationale\": \"one sentence explaining the archetype choice\",\n  \"stage\": \"idea | pre_seed | seed | growth\",\n  \"stage_confidence\": 0.0 to 1.0,\n  \"stage_rationale\": \"one sentence explaining the stage choice\",\n  \"value_proposition\": \"concise statement of the core value offered\",\n  \"target_customer\": \"who the primary customer or beneficiary is\",\n  \"key_risks\": [\"up to five biggest risks as short noun phrases\"],\n  \"dimension_emphasis\": {\n    \"note\": \"any dimensions that should receive extra or reduced focus given this project type\",\n    \"overweight\": [\"dimension slugs\"],\n    \"underweight\": [\"dimension slugs\"]\n  },\n  \"constraints\": \"any explicit constraints, deadlines, or context from the brief worth preserving\"\n}\n\n## Project brief\n{{RAW_INPUT}}\n",
+    "generation_prompt": "You are an expert project decomposition assistant working within the BPMO + Proof Points backcasting framework (Business · Product · Market · Operations, version {{FRAMEWORK_VERSION}}).\n\n## Your task\nDecompose the project brief into a structured tree of objectives, one per relevant category, each pre-seeded with the expected proof tasks from the framework catalog. The output will be reviewed and edited by the founder before being committed to the platform — treat it as a rigorous first draft, not a finished plan.\n\n## Project context (from interpretation step)\n{{INTERPRETATION_JSON}}\n\n## Project stage\n{{PROJECT_STAGE}}\n\n## Resolved category set for this archetype\nThe following categories are active for this project. Each carries a proof_points catalog — the framework's expected evidence for that category.\n{{RESOLVED_CATEGORIES_JSON}}\n\n## Rules for objectives\n1. Produce one objective per category that is materially relevant to this project at its current stage. You may omit a category only if it is genuinely not applicable (e.g. a pure-software project has no manufacturing objective). Never omit a category just because it is hard or early.\n2. Title: outcome-oriented, specific to this project (not the generic category label). Max 12 words.\n3. Description: 2–3 sentences explaining what achieving this objective means for this specific project, the current context, and why it matters at this stage.\n4. dimension and category: copy the exact slugs from the resolved category set. These are immutable framework identifiers.\n\n## Rules for proof_tasks\nProof tasks are the evidence the founder must deliver to demonstrate progress on the objective. They come in two kinds:\n\n### source: \"framework\" tasks (required)\n- For every proof_point in the category's catalog whose stage is at or before the NEXT stage beyond the current project stage, produce one proof task.\n  - Example: project is at pre_seed → include idea + pre_seed proof points; include seed proof points only if they are already partially begun or are blocking the next funding step.\n- Title: contextualise the generic catalog label to this specific project (use project names, numbers, actual customers, domain specifics). Keep under 15 words.\n- CRITICAL: copy proof_type, stage, and early_signal VERBATIM from the catalog entry. Do not invent or alter these fields for source:\"framework\" tasks.\n\n### source: \"ai\" tasks (optional additions)\n- You may add project-specific proof tasks not in the catalog, for anything important to this project that the generic catalog does not cover.\n- Choose proof_type and stage that honestly reflect what the task demonstrates and when it is achievable.\n- Use sparingly — the catalog already covers the framework's expectations. Add only what is genuinely novel.\n\n## Rules for notes (optional)\nYou may add up to two notes per objective for context, rationale, or links to key risks. note_type must be one of: \"note\", \"insight\", \"context\".\n\n## Retrieved context\n{{RETRIEVED_CONTEXT}}\n\n---\n\n## Output format\nOutput ONLY valid JSON matching the output schema exactly — no preamble, no markdown fences, nothing else.\n{{OUTPUT_SCHEMA_JSON}}\n",
+    "output_schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "required": [
+        "framework",
+        "project",
+        "objectives"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "framework": {
+          "type": "object",
+          "required": [
+            "slug",
+            "version"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "slug": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "archetype": {
+              "type": "string",
+              "enum": [
+                "saas",
+                "marketplace",
+                "fund_impact",
+                "services",
+                "hardware",
+                "nonprofit",
+                "research"
+              ]
+            }
+          }
+        },
+        "project": {
+          "type": "object",
+          "required": [
+            "title",
+            "description"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "description": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 600
+            }
+          }
+        },
+        "objectives": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 30,
+          "items": {
+            "type": "object",
+            "required": [
+              "title",
+              "description",
+              "dimension",
+              "category",
+              "proof_tasks"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 80
+              },
+              "description": {
+                "type": "string",
+                "minLength": 20,
+                "maxLength": 500
+              },
+              "dimension": {
+                "type": "string",
+                "enum": [
+                  "business",
+                  "product",
+                  "market",
+                  "operations",
+                  "impact"
+                ]
+              },
+              "category": {
+                "type": "string",
+                "enum": [
+                  "business.strategy",
+                  "business.model_economics",
+                  "business.finance_funding",
+                  "business.legal_governance",
+                  "business.org_team",
+                  "product.strategy_roadmap",
+                  "product.discovery_research",
+                  "product.design_ux",
+                  "product.engineering_build",
+                  "product.data_technology",
+                  "product.quality_reliability",
+                  "market.research_sizing",
+                  "market.positioning_brand",
+                  "market.marketing_demand",
+                  "market.sales_bd",
+                  "market.customer_success",
+                  "market.growth_analytics",
+                  "operations.process_workflow",
+                  "operations.delivery_supplychain",
+                  "operations.systems_tooling",
+                  "operations.finance_admin",
+                  "operations.performance_kpi",
+                  "market.supply_acquisition",
+                  "market.demand_acquisition",
+                  "market.matching_liquidity",
+                  "operations.trust_safety",
+                  "operations.portfolio_mgmt",
+                  "impact.measurement",
+                  "product.industrial_design",
+                  "product.manufacturing",
+                  "product.ip_strategy"
+                ]
+              },
+              "proof_tasks": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "title",
+                    "proof_type",
+                    "stage",
+                    "source"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "minLength": 5,
+                      "maxLength": 120
+                    },
+                    "proof_type": {
+                      "type": "string",
+                      "enum": [
+                        "strategy",
+                        "validation",
+                        "capability",
+                        "relationship",
+                        "artifact",
+                        "traction"
+                      ]
+                    },
+                    "stage": {
+                      "type": "string",
+                      "enum": [
+                        "idea",
+                        "pre_seed",
+                        "seed",
+                        "growth"
+                      ]
+                    },
+                    "early_signal": {
+                      "type": "boolean"
+                    },
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "framework",
+                        "ai"
+                      ]
+                    }
+                  }
+                }
+              },
+              "notes": {
+                "type": "array",
+                "maxItems": 2,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "note_type",
+                    "title"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "note_type": {
+                      "type": "string",
+                      "enum": [
+                        "note",
+                        "insight",
+                        "context"
+                      ]
+                    },
+                    "title": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 120
+                    },
+                    "body_markdown": {
+                      "type": "string",
+                      "maxLength": 2000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "default_depth": 3,
+    "target_stage_param": "project_stage",
+    "template_variables": {
+      "interpretation": {
+        "RAW_INPUT": "backcaster_sessions.raw_input",
+        "ARCHETYPE_DEFINITIONS_JSON": "engine_inject: array of {slug, label, example} from taxonomy.archetypes"
+      },
+      "generation": {
+        "FRAMEWORK_VERSION": "framework.framework_version",
+        "INTERPRETATION_JSON": "backcaster_sessions.interpreted_input (parsed JSON)",
+        "PROJECT_STAGE": "backcaster_sessions.selected_parameters[target_stage_param]",
+        "RESOLVED_CATEGORIES_JSON": "engine_inject: effective category set after applying archetype overlay (base_categories minus remove_categories, plus add_categories, with override_categories applied). Each entry includes slug, label, scope, and the full proof_points array. Emphasis weights are NOT injected into the prompt — they are used by the qualify calc, not the generator.",
+        "OUTPUT_SCHEMA_JSON": "engine_inject: JSON.stringify(generation.output_schema, null, 2)",
+        "RETRIEVED_CONTEXT": "vox_inject: open and licensed reference content retrieved by Vox /backcaster/generate from Rewind (reference_content + licensed_content source_types), domain-scoped to the resolved category set. Access-filtered per user. Empty string if Rewind is in stub mode."
+      }
+    },
+    "determinism_guardrail": {
+      "description": "After generation, the engine enforces this contract on every source:'framework' proof task: if the returned proof_type or stage does not exactly match the catalog entry for that proof_point label and category, the engine overwrites it from the catalog. This keeps the proof taxonomy trustworthy regardless of model drift. The engine identifies the catalog entry by (category, proof_point index) — framework tasks are emitted in catalog order before any source:'ai' tasks.",
+      "enforcement": "post_generation",
+      "fields_overwritten": [
+        "proof_type",
+        "stage",
+        "early_signal"
+      ],
+      "match_key": [
+        "category",
+        "proof_task_index_in_catalog"
+      ]
+    },
+    "repair_policy": {
+      "on_schema_violation": "retry_once_with_error_appended",
+      "max_retries": 2,
+      "on_exhausted": "surface_as_draft_with_validation_errors"
+    },
+    "content_model": {
+      "description": "All AI generation routes through Vox (chiapi.xchange.eco), not direct OpenAI. Vox performs two retrieval passes before calling OpenAI: (1) user workspace context from Rewind (source_types: project, objective, note, backcaster_version); (2) reference content from semantic_documents (entity_type: reference_content or licensed_content), domain-scoped to the resolved category set via semantic_tags.",
+      "pure_text_creation_stays_direct": [
+        "extendDescription",
+        "bulkFill (extend_description, rewrite_title)",
+        "fillNode",
+        "generateMode"
+      ],
+      "routes_through_vox": [
+        "interpretInput  →  POST chiapi.xchange.eco/backcaster/interpret",
+        "generateTree    →  POST chiapi.xchange.eco/backcaster/generate"
+      ],
+      "reference_content_source": {
+        "supabase_table": "semantic_documents",
+        "entity_types": [
+          "reference_content",
+          "licensed_content"
+        ],
+        "access_open": "metadata.access = 'open'  → no check needed",
+        "access_licensed": "metadata.access = 'licensed' → check_content_access(user_id, entity_id) RPC",
+        "domain_scoping": "semantic_tags[] carries category slugs; Vox biases retrieval by these",
+        "first_seed": "22 BPMO category descriptions seeded from ontology by seed-frameworks.ts",
+        "vox_source_type": "reference_content and licensed_content rows in memory_sources (Vox local DB migration 009)"
+      }
+    }
+  },
+  "archetype_detection": {
+    "method": "infer_then_confirm",
+    "description": "The interpretation step infers archetype_slug and archetype_confidence from the brief. The engine then surfaces a HITL confirm card: 'I read this as a [archetype label] — does that look right?' with alternatives. The confirmed archetype resolves the effective category set before generation. This follows the existing AIProposal propose→confirm pattern.",
+    "confidence_threshold_for_auto_confirm": 0.85,
+    "confirm_card_type": "archetype_confirm"
+  },
+  "stage_detection": {
+    "method": "infer_then_confirm",
+    "description": "Stage is inferred from the brief (via the interpretation step) and confirmed by the founder via a single-question HITL step before generation. Inferred stage is preferred over founder declaration because it is harder to game: a project with no proof tasks delivered in idea-stage categories should not self-declare as seed.",
+    "selected_parameters_key": "project_stage",
+    "confirmation_ui": "stage_picker_card"
+  },
+  "materialization": {
+    "project_from": "root",
+    "objective_from": "category",
+    "proof_task_from": "proof_point",
+    "tag_fields": {
+      "dimension": "objectives.dimension",
+      "category": "objectives.category"
+    },
+    "proof_metadata_target": "notes.detail",
+    "proof_metadata_shape": {
+      "kind": "proof",
+      "proof_type": "<from proof_task.proof_type>",
+      "stage": "<from proof_task.stage>",
+      "early_signal": "<from proof_task.early_signal, default false>",
+      "dimension": "<from parent objective.dimension>",
+      "category": "<from parent objective.category>",
+      "expected": true,
+      "delivered": false,
+      "source": "<from proof_task.source>",
+      "framework_slug": "bpmo-proof",
+      "framework_version": "1.1.0",
+      "pq_cache": null,
+      "pq_at": null,
+      "_pq_note": "pq_cache and pq_at are null at seed time; populated by the Qualify service on first read and cached until notes.updated_at advances."
+    },
+    "rpc_map": {
+      "project": "create_project(title, description, framework_slug, framework_version)",
+      "objective": "create_objective(project_id, title, description, dimension, category, detail)",
+      "task": "create_task(objective_id, title, detail)",
+      "note": "create_note(note_type, title, body_markdown)",
+      "link": "objective_notes(objective_id, note_id)"
+    },
+    "idempotency_key": "backcaster_sessions.materialized_init_id"
+  },
+  "qualify_integration": {
+    "description": "The Qualify funnel reads objectives.dimension (wave-graph lane), objectives.category (comparison axis), and per-task proof signals. notes.done=true is the binary delivery gate. Additional note attributes — content length, linked notes, attachments — weight the quality of each delivered proof, producing a per-category coverage_score * quality_score composite. Low-evidence or low-quality categories render as wide translucent bands on the wave graph; high-certainty delivered categories as tight ridgelines. Comparison requires matching framework_slug + framework_version.",
+    "proof_quality_model": {
+      "_description": "proof_quality is a 0.0–1.0 score computed at Qualify read time from live note attributes. It is NOT stored permanently — it is cached in notes.detail under 'pq_cache' with a 'pq_at' timestamp and invalidated whenever the note is updated (trigger or app-layer). notes.done=true is always the binary gate: a task that is not done has proof_quality=0 regardless of content. A task that IS done has proof_quality in [0.1, 1.0] depending on quality signals.",
+      "delivery_gate": {
+        "field": "notes.done",
+        "type": "boolean",
+        "rule": "done=false → proof_quality=0.0, task is not counted as delivered",
+        "rule_done": "done=true  → compute proof_quality from signals below, minimum 0.1"
+      },
+      "signals": {
+        "content": {
+          "sources": [
+            "notes.body_text"
+          ],
+          "formula": "min(1.0, len(body_text.strip()) / CONTENT_THRESHOLD)",
+          "rationale": "Substance of the proof write-up. A blank or one-line mark-done scores near zero; a full explanation of what was learned, built, or agreed scores higher. Threshold is generous — we want to reward writing, not punish brevity.",
+          "weight": 0.4,
+          "CONTENT_THRESHOLD": 300
+        },
+        "artifact": {
+          "sources": [
+            "notes.preferred_external_container_id  (non-null → external doc/sheet/deck linked)",
+            "note_links WHERE link_type IN ('attachment','proof','ref') FROM this note",
+            "count of <a href> tags in notes.body_html as url_count"
+          ],
+          "formula": "raw = attachment_count * ATTACHMENT_WEIGHT + url_count * URL_WEIGHT; artifact_score = min(1.0, raw)",
+          "rationale": "Tangible assets — a deck, a spreadsheet, a signed document, a prototype link — carry more evidential weight than prose. An attachment (preferred_external_container_id or a linked note with link_type='attachment') scores more than a bare URL in body text.",
+          "weight": 0.35,
+          "ATTACHMENT_WEIGHT": 0.6,
+          "URL_WEIGHT": 0.25
+        },
+        "links": {
+          "sources": [
+            "COUNT(note_links WHERE from_note_id = task.id OR to_note_id = task.id)",
+            "COUNT(objective_notes WHERE note_id = task.id) — note linked to >1 objective"
+          ],
+          "formula": "min(1.0, total_link_count / LINK_THRESHOLD)",
+          "rationale": "Cross-referencing shows the proof integrates with the broader project — a task linked to other notes (related decisions, supporting evidence) or referenced by multiple objectives shows higher epistemic value than an isolated completed task. One link raises it noticeably; three saturates.",
+          "weight": 0.25,
+          "LINK_THRESHOLD": 3
+        }
+      },
+      "base_formula": "base = 0.40 * content_score + 0.35 * artifact_score + 0.25 * link_score",
+      "early_signal_multiplier": {
+        "value": 1.15,
+        "condition": "proof_task.early_signal == true AND base > 0.0",
+        "rationale": "An early-signal proof point — the kind of counter-intuitive, strategy-or-learning evidence that investors rarely see — carries extra weight in the funnel when actually delivered with substance. The multiplier is modest (15%) and capped at 1.0 so it rewards early thoroughness without distorting the overall score."
+      },
+      "final_formula": "proof_quality = min(1.0, base * (1.15 if early_signal and base > 0 else 1.0)); if done=false: proof_quality = 0.0; if done=true and base=0: proof_quality = 0.1  (floor for minimal completion credit)",
+      "cache": {
+        "location": "notes.detail under keys 'pq_cache' (score) and 'pq_at' (ISO timestamp)",
+        "invalidation": "cleared whenever notes row is updated (updated_at trigger or app layer)",
+        "read_policy": "use cached value if pq_at >= notes.updated_at, else recompute and cache"
+      },
+      "additional_index": "notes_proof_done_idx ON notes (done) WHERE note_type='task' AND detail->>'kind'='proof'"
+    },
+    "category_scoring": {
+      "_description": "Coverage and quality are separate terms. Separating them keeps the wave graph honest: a category with three done tasks but all minimal completions shows high coverage and low quality (a warning), while one done task with a rich artifact shows low coverage but high quality (a promising signal).",
+      "per_task": {
+        "delivered": "notes.done == true",
+        "proof_quality": "0.0 to 1.0 per the proof_quality_model above"
+      },
+      "per_category": {
+        "eligible_tasks": "All tasks WHERE detail->>'kind'='proof' AND detail->>'category'=slug AND detail->>'stage' <= stage_ordering[project_stage + 1]",
+        "coverage_score": {
+          "formula": "count(done=true eligible tasks) / count(all eligible tasks)",
+          "range": "0.0 to 1.0",
+          "meaning": "What fraction of expected proof has been delivered at all"
+        },
+        "quality_score": {
+          "formula": "mean(proof_quality for done=true eligible tasks)  [0.0 if none done]",
+          "range": "0.0 to 1.0",
+          "meaning": "How thoroughly the delivered proof is evidenced"
+        },
+        "category_score": {
+          "formula": "coverage_score * quality_score",
+          "range": "0.0 to 1.0",
+          "meaning": "Combined signal: did they deliver AND is it substantiated"
+        },
+        "certainty": {
+          "formula": "evidence_density = count(done=true eligible tasks) / max(1, count(all eligible tasks)); mapping_confidence = from semantic alignment step (min 0 if no objective, max 1 if exact slug match); certainty = 0.6 * evidence_density + 0.4 * mapping_confidence",
+          "meaning": "How confident the funnel is in the category_score. Low certainty = wide translucent band on the wave graph. High certainty = tight ridgeline."
+        }
+      },
+      "dimension_rollup": {
+        "formula": "certainty_weighted_mean(category_scores within dimension)",
+        "wave_graph": "X=dimension lane, Y=dimension_score, band_width=1-certainty"
+      },
+      "headline": {
+        "overall_similarity": "certainty_weighted_mean across all dimension scores",
+        "overall_certainty": "mean(certainty) across all categories with >= 1 eligible task"
+      }
+    },
+    "proof_read_query": {
+      "table": "notes",
+      "filter": "note_type = 'task' AND detail->>'kind' = 'proof' AND detail->>'framework_slug' = 'bpmo-proof' AND done = true  -- gate applied at query level for coverage calc;                     fetch all (done + not-done) for coverage denominator",
+      "join_for_quality": [
+        "LEFT JOIN note_links nl ON nl.from_note_id = notes.id OR nl.to_note_id = notes.id",
+        "LEFT JOIN objective_notes on2 ON on2.note_id = notes.id  -- count cross-objective refs"
+      ],
+      "indexes_required": [
+        "notes_proof_type_idx     ON notes ((detail->>'proof_type'))  WHERE note_type='task'",
+        "notes_proof_stage_idx    ON notes ((detail->>'stage'))       WHERE note_type='task'",
+        "notes_proof_category_idx ON notes ((detail->>'category'))    WHERE note_type='task'",
+        "notes_proof_done_idx     ON notes (done)                     WHERE note_type='task' AND detail->>'kind'='proof'"
+      ]
+    }
+  },
+  "versioning": {
+    "policy": "immutable_versions",
+    "description": "A published framework version is never mutated. A new semver row is inserted. Qualification runs record the version they used; comparability requires the same version or an explicit migration map. Patch (x.y.Z): proof-point label corrections, scope clarifications, no slug changes. Minor (x.Y.0): new categories or archetypes added; existing slugs unchanged. Major (X.0.0): dimension or category slug changes; migration map required."
+  }
+}
