@@ -24,6 +24,11 @@ export type AICardKind = (typeof AI_CARD_KINDS)[number];
 export const AI_WRITE_TOOLS = [
   'create_task', 'complete_task', 'assign_user', 'add_note',
   'add_attachment', 'set_objective_fields', 'link_notes',
+  // lifecycle tools
+  'promote_to_agreement',
+  'accept_agreement',
+  'initiate_completion',
+  'record_completion_decision',
 ] as const;
 export type AIWriteTool = (typeof AI_WRITE_TOOLS)[number];
 
@@ -77,6 +82,23 @@ export interface LinkNotesPayload {
   link_type: string;
 }
 
+/* ---------- Lifecycle payload interfaces ---------- */
+export interface PromoteToAgreementPayload {
+  contract_title: string;
+  contract_text: string;
+  idempotency_key: string; // client generates: `${objective_id}-promote-${Date.now()}`
+}
+export interface AcceptAgreementPayload {
+  assignment_id: string;   // uuid of the specific assignment being accepted
+}
+export interface InitiateCompletionPayload {
+  deadline_hours?: number; // default 72 if omitted
+}
+export interface RecordCompletionDecisionPayload {
+  decision: 'confirmed' | 'dissented';
+  note?: string;
+}
+
 /* ---------- Proposal (discriminated on `tool`) ---------- */
 interface AIProposalBase {
   objective_id: string;
@@ -91,7 +113,11 @@ export type AIProposal =
   | (AIProposalBase & { tool: 'add_note';             payload: AddNotePayload })
   | (AIProposalBase & { tool: 'add_attachment';       payload: AddAttachmentPayload })
   | (AIProposalBase & { tool: 'set_objective_fields'; payload: SetObjectiveFieldsPayload })
-  | (AIProposalBase & { tool: 'link_notes';           payload: LinkNotesPayload });
+  | (AIProposalBase & { tool: 'link_notes';           payload: LinkNotesPayload })
+  | (AIProposalBase & { tool: 'promote_to_agreement';        payload: PromoteToAgreementPayload })
+  | (AIProposalBase & { tool: 'accept_agreement';           payload: AcceptAgreementPayload })
+  | (AIProposalBase & { tool: 'initiate_completion';        payload: InitiateCompletionPayload })
+  | (AIProposalBase & { tool: 'record_completion_decision'; payload: RecordCompletionDecisionPayload });
 
 /* ---------- Card ---------- */
 export interface AICardRef { label: string; url: string; }
@@ -104,6 +130,7 @@ export interface AICard {
   refs?: AICardRef[];
   dismissible: boolean;
   confirmable: boolean;
+  is_gravity?: boolean;     // true for promote_to_agreement and initiate_completion cards
 }
 
 /* ---------- Conversational route envelopes ----------
