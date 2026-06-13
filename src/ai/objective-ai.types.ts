@@ -46,12 +46,48 @@ export interface CompleteTaskPayload {
   task_note_id: string;
   done: boolean;
 }
+/**
+ * Payload for the assign_user AI write tool.
+ *
+ * Routes through invite_to_object RPC — never writes to collaborators directly.
+ * Supply either central_id (known platform user) or email (unknown/external user),
+ * not both. If both are supplied, central_id takes precedence.
+ *
+ * object_type mirrors collaborators.object_type — the collaborators table covers
+ * all object types (project, objective, note, task).
+ */
 export interface AssignUserPayload {
-  scope: 'objective' | 'task';
-  target_id: string;              // objective_id or task_note_id
-  central_id?: string;            // existing member
-  email?: string;                 // present (no central_id) => send invitation
+  /** The type of object being assigned to. Matches collaborators.object_type. */
+  object_type: 'project' | 'objective' | 'note' | 'task';
+  /** UUID of the target object (project_id, objective_id, note_id, or task note_id). */
+  object_id: string;
+  /**
+   * central_users.id of an existing platform user.
+   * Supply this when the user is already known on the platform.
+   * Mutually exclusive with email — supply one or the other.
+   */
+  central_id?: string;
+  /**
+   * Email address of the person to invite.
+   * Supply this when the user is not on the platform, or when only their
+   * email is known. Mutually exclusive with central_id.
+   */
+  email?: string;
+  /**
+   * Role to assign. Must be a valid collab_role enum value.
+   * Note: 'creator' is never assignable — it is set only on object creation.
+   * AI should only propose 'manager' | 'editor' | 'viewer'.
+   */
   role: CollabRole;
+  /**
+   * True when this person is external to the organisation —
+   * i.e. a contractor, external mentor, outside assessor, or partner.
+   * False (default) for employees and internal team members.
+   * AI should infer this from context clues in the conversation.
+   */
+  is_external?: boolean;
+  /** Optional personal message to include in the invitation notification. */
+  message?: string;
 }
 export interface AddNotePayload {
   note_type: 'note' | 'proof' | 'reference';
@@ -97,6 +133,65 @@ export interface InitiateCompletionPayload {
 export interface RecordCompletionDecisionPayload {
   decision: 'confirmed' | 'dissented';
   note?: string;
+}
+
+// ---------------------------------------------------------------------------
+// Supabase row types — membership layer
+// These mirror the live DB columns exactly (verified 2026-06-13).
+// ---------------------------------------------------------------------------
+
+/**
+ * A row from the `collaborators` table.
+ * The table covers all object types via the object_type / object_id polymorphic pattern.
+ * Unique constraint: (object_type, object_id, user_id).
+ */
+export interface CollaboratorRow {
+  id: string;
+  object_type: 'project' | 'objective' | 'note' | 'task' | 'bundle' | 'init';
+  object_id: string;
+  user_id: string;           // central_users.id
+  role: CollabRole;
+  is_external: boolean;
+  access_source: string;     // 'direct' | 'invited' | 'inherited'
+  invited_by: string | null; // central_users.id of the person who invited them
+  status: 'active' | 'inactive';
+  tenant_id: string;
+  created_at: string;        // ISO timestamp
+  updated_at: string;        // ISO timestamp
+}
+
+/**
+ * A row from the `invitations` table (canonical).
+ * Note: do NOT use project_invitations — that is a legacy table.
+ * invitation_status enum: pending | accepted | declined | revoked | expired
+ */
+export interface InvitationRow {
+  id: string;
+  object_type: string;
+  object_id: string;
+  invitee_user_id: string | null;   // null for email-only invitations
+  invitee_email: string | null;     // null when invitee_user_id is known
+  role: CollabRole;
+  status: 'pending' | 'accepted' | 'declined' | 'revoked' | 'expired';
+  invited_by: string;               // central_users.id
+  is_external: boolean;
+  message: string | null;
+  assignment_offer_id: string | null;
+  expires_at: string | null;        // ISO timestamp
+  tenant_id: string;
+  created_at: string;
+  updated_at: string;
+}
+
+/**
+ * Result shape of get_general_objects / ensure_general_objects RPCs.
+ * Every tenant has exactly one general project and one general objective,
+ * used as a catch-all container for tasks/notes not linked to any specific objective.
+ * These objects are hidden from normal project lists (title = '__general__').
+ */
+export interface GeneralObjects {
+  project_id: string;
+  objective_id: string;
 }
 
 /* ---------- Proposal (discriminated on `tool`) ---------- */
