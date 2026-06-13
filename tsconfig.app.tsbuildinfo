@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/index.ts","./src/main.tsx","./src/vite-env.d.ts"],"version":"6.0.3"}
+{"root":["./src/App.tsx","./src/index.ts","./src/main.tsx","./src/vite-env.d.ts","./src/ai/index.ts","./src/ai/objective-ai.types.ts","./src/backcasting/framework.ts","./src/backcasting/index.ts","./src/skin/gravity.ts","./src/skin/index.ts","./src/skin/personas.ts","./src/skin/skins.ts","./src/skin/tokens.ts","./src/skin/types.ts"],"errors":true,"version":"6.0.3"}
