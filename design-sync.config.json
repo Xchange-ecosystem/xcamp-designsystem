@@ -1,0 +1,9 @@
+{
+  "pkg": "@xchange/ui",
+  "globalName": "XchangeUI",
+  "shape": "package",
+  "buildCmd": "npm run build",
+  "tsconfig": "tsconfig.app.json",
+  "cssEntry": "src/styles/globals.css",
+  "runtimeFontPrefixes": ["IBM Plex", "Cormorant"]
+}
