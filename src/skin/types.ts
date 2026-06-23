@@ -35,20 +35,25 @@ export const SKIN_DEFAULTS: SkinConfig = {
 
 /** Full color token set for one tone. All values are hex strings. */
 export interface SkinColorTokens {
-  bg:        string;
-  surface:   string;
-  surface2:  string;
-  ink:       string;
-  inkSoft:   string;
-  inkFaint:  string;
-  line:      string;
-  lineSoft:  string;
-  accent:    string;
-  accentSoft:string;
-  good:      string;
-  goodSoft:  string;
-  warn:      string;
-  warnSoft:  string;
+  bg:           string;
+  surface:      string;
+  surfaceRaised:string;
+  surface2:     string;
+  ink:          string;
+  inkSoft:      string;
+  inkFaint:     string;
+  inkSubtle:    string;
+  line:         string;
+  lineSoft:     string;
+  accent:       string;
+  accentSoft:   string;
+  accentBright: string;
+  accentWarm:   string;
+  accentCool:   string;
+  good:         string;
+  goodSoft:     string;
+  warn:         string;
+  warnSoft:     string;
 }
 
 /** Full radius token set for one tone. Values are CSS strings e.g. "4px". */
@@ -68,6 +73,10 @@ export interface SkinTypographyTokens {
   labelTransform: 'uppercase' | 'none';
   labelSpacing:   string; // e.g. "0.08em" or "normal"
   labelSize:      string; // e.g. "10px"
+  /** Objective modal heading font — from Claude Design export */
+  objHeadFamily:  string;
+  /** Objective modal body font — from Claude Design export */
+  objBodyFamily:  string;
 }
 
 /** Motion preferences for one tone. */
