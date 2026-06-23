@@ -634,3 +634,14 @@ A separate skin scope for the objective editor modal, applied via `data-objectiv
 | `playful` | `22 80% 58%` | `'Fraunces'` | `'Hanken Grotesk'` | `14px` | on |
 
 Neutral tokens (`--obj-bg`, `--obj-ink`, `--obj-line`, etc.) inherit from the active semantic tokens so they remain light/dark-aware.
+
+### Out of scope/ Do not do
+
+The following components from xcamp-foundation are NOT available in this repo and must not be 
+imported or recreated:
+- ShellRouter, CanvasShell, CompanionShell
+- FloatingAltitudeDial, AIPresenceBar, GravityModal
+- FeedCard, SummaryCard, ObjectiveCard, ProjectCard
+- GravitySurface, Committed, Ephemeral material wrappers
+
+Use shadcn/ui primitives and inline Tailwind utilities instead.
