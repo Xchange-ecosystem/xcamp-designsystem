@@ -150,13 +150,6 @@ The skin system provides the runtime values for all the CSS variables above. A s
 | `companion` | Conversational-first, AI primary surface | 0, 1, 2 | 0 |
 | `canvas` | Spatial node-and-edge graph, no route tree | 0, 1, 2 | 2 |
 
-#### Tone
-
-| Value | Character |
-|---|---|
-| `scientific` | Precise, data-forward, low-motion, monospace figures, high contrast |
-| `playful` | Warm, rounded, motion-on, serif headings, sentence-case labels |
-
 #### AI Persona
 
 | Value | Display name | Tagline | Default tone |
