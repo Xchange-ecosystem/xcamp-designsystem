@@ -6,8 +6,8 @@
 import type { GravityTokens } from './types';
 
 export const GRAVITY: GravityTokens = {
-  bg:     '#fff8f0',
-  border: '#b25a1f',
-  ink:    '#5c2400',
-  soft:   '#8b4513',
+  bg:     '#f5eefc',
+  border: '#8b3dd9',
+  ink:    '#260d40',
+  soft:   '#612c96',
 };
