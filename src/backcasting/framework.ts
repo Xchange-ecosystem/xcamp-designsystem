@@ -146,7 +146,7 @@ export interface GenerationConfig {
   interpretation_prompt: string;
   generation_prompt: string;
   output_schema: Record<string, unknown>;
-  default_depth: number;
+  default_proof_density: number;
   target_stage_param: string;
   template_variables: {
     interpretation: Record<string, string>;

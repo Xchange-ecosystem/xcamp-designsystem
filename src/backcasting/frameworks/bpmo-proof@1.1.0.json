@@ -18,7 +18,7 @@
     ],
     "objective_level": "category",
     "proof_level": "category",
-    "depth_note": "Two-level hierarchy (dimension → category). The Backcaster depth parameter controls how many objectives are generated per category, not the structural depth of the framework itself."
+    "depth_note": "Two-level hierarchy (dimension → category). The proof_density parameter controls how many objectives are generated per category, not the structural depth of the framework itself."
   },
   "proof_model": {
     "types": [
@@ -1578,7 +1578,7 @@
         }
       }
     },
-    "default_depth": 3,
+    "default_proof_density": 3,
     "target_stage_param": "project_stage",
     "template_variables": {
       "interpretation": {
