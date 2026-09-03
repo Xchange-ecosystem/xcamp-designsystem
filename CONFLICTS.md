@@ -35,3 +35,17 @@ into SkinProvider" was done at the only real wiring point that exists
 today: xcamp-companion's `.dark` CSS block, toggled by its own
 `ThemeProvider` (src/lib/theme.tsx). Revisit once a real cross-app
 SkinProvider ships.
+
+**App-level override (2026-09-03, "Amend dark-theme brand color" session):**
+this resolution — and the canonical `tokens.json` Xcamp(light)/Nox(dark)
+split it's based on — stands unchanged for the design system and for
+xcamp-nox-founder-app, which still uses it. **xcamp-companion specifically
+now overrides it**, by explicit human decision: xcamp-companion is a
+separate, single-brand app (Xcamp only, no Nox identity) and its dark mode
+now uses a teal accent instead of the canonical purple. This is not a
+correction to `DARK_BRAND_TOKENS` or a reopening of this conflict — the
+canonical value is still purple, still correct for consumers that want the
+Nox identity. It's recorded here so a future reader of this file doesn't
+mistake xcamp-companion's teal dark mode for tokens.json drift. See
+xcamp-companion's `src/styles.css` (the `AMENDMENT` comment above its
+`.dark {}` block) for the actual override values.
