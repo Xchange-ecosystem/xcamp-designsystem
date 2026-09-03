@@ -116,7 +116,14 @@ export const TONE_TOKENS: Record<import('./types').Tone, SkinTokenSet> = {
 
 /** Dark theme brand tokens from Claude Design export v1.0.0.
  *  Dark mode flips brand from teal to electric purple.
- *  See CONFLICTS.md #2 — not yet wired into SkinProvider. */
+ *  See CONFLICTS.md #2 — resolved (kept purple) as the canonical value. No
+ *  SkinProvider exists yet to consume this at runtime.
+ *  App-level override (2026-09-03): xcamp-companion no longer wires this
+ *  purple value — it's single-brand Xcamp (no Nox identity) and overrides
+ *  to a teal dark accent in its own `.dark` CSS block instead. This
+ *  DARK_BRAND_TOKENS purple value is still canonical for other consumers
+ *  (e.g. xcamp-nox-founder-app) that want the Nox identity — see
+ *  CONFLICTS.md #2's "App-level override" note for the full reasoning. */
 export const DARK_BRAND_TOKENS = {
   primary:            'hsl(264 85% 47%)',
   primaryForeground:  'hsl(210 40% 98%)',
