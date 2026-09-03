@@ -116,7 +116,9 @@ export const TONE_TOKENS: Record<import('./types').Tone, SkinTokenSet> = {
 
 /** Dark theme brand tokens from Claude Design export v1.0.0.
  *  Dark mode flips brand from teal to electric purple.
- *  See CONFLICTS.md #2 — not yet wired into SkinProvider. */
+ *  See CONFLICTS.md #2 — resolved (kept purple). No SkinProvider exists yet
+ *  to consume this at runtime; xcamp-companion wires the equivalent values
+ *  directly into its own `.dark` CSS block for now (P1.0, 2026-09-03). */
 export const DARK_BRAND_TOKENS = {
   primary:            'hsl(264 85% 47%)',
   primaryForeground:  'hsl(210 40% 98%)',
